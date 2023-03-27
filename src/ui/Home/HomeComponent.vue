@@ -8,8 +8,7 @@
       the code!
     </p>
     <p>
-      You could start modifying the <code>src/App.vue</code> file to see any
-      change in the webapp.
+      This is the home page.
     </p>
   </div>
 </template>
