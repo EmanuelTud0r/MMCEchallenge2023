@@ -26,7 +26,7 @@ steps:
     - id: 'tf plan'
       name: 'hashicorp/terraform:1.0.0'
       entrypoint: sh
-      args: ["-c","terraform plan -out=plan.out"]    
+      args: ["-c","ls; terraform plan -out=plan.out"]    
     
     - id: 'tf apply'
       name: 'hashicorp/terraform:1.0.0'
