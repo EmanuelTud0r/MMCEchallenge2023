@@ -1,6 +1,8 @@
-version: "3"
+version: "3" # Specifies the version of the Docker Compose file format
 services:
-  mms2023:
-    image: gcr.io/a37nnunvhmc0oiwh3rx0rwkcl4gr5r/github.com/emanueltud0r/mmcechallenge2023@sha256:c570d96576cf224b503330d711de6eca875cc2e7bac5330b062d3ad070f09cc2
+  mms2023: # Defines a service named "mms2023"
+    image: gcr.io/a37nnunvhmc0oiwh3rx0rwkcl4gr5r/github.com/emanueltud0r/mmcechallenge2023:latest # Specifies the Docker image to use for this service
+    ports:
+      - '3000:3000' # Maps port 3000 on the host to port 3000 in the container
     expose:
-      - "3000"
+      - "3000" # Exposes port 3000 to other services in the same network
