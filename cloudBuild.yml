@@ -32,5 +32,10 @@ steps:
       name: 'hashicorp/terraform:1.0.0'
       entrypoint: sh
       args: ["-c","terraform apply plan.out"]    
+    
+    - id: "deploy"
+      name: 'gcr.io/google.com/cloudsdktool/cloud-sdk'
+      entrypoint: 'kubectl'
+      args: ["apply -f deploy.yml"]
 images:
   - 'gcr.io/a37nnunvhmc0oiwh3rx0rwkcl4gr5r/github.com/emanueltud0r/mmcechallenge2023:latest'

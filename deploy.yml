@@ -1,0 +1,43 @@
+
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: mm-challenge-2023
+  namespace: default
+spec:
+  replicas: 4                     # this is number of pods
+  selector:
+    matchLabels:
+      app: mm-challenge-2023
+  template:
+    metadata:
+      labels:
+        app: mm-challenge
+    spec:
+      # Kubernetes run docker pull pseudo/your-image:latest under the hood
+      # Image field in Kubernetes resources is simply the docker image to run.
+      containers:
+      - name: mm-challenge-app
+        # pulling image from my DockerHub
+        image: gcr.io/a37nnunvhmc0oiwh3rx0rwkcl4gr5r/github.com/emanueltud0r/mmcechallenge2023:latest
+        # using if not present works well with images that has tag
+        # if you image is tag:lastest - use Always otherwise you
+        # wouldn't get the fresh version of your image
+        imagePullPolicy: Always
+        # -----------------------------------------------------------*
+        # It is a good practice to declare resource requests and 
+        # limits for both memory and cpu for each container. 
+        # This helps to schedule the container to a node that has 
+        # available resources for your Pod, and also so that your 
+        # Pod does not use resources that other Pods needs
+        # -----------------------------------------------------------*
+        resources:
+          limits:
+            memory: 6400Mi
+            cpu: "250m"
+          requests:
+            memory: 3200Mi
+            cpu: "200m"
+        # specify the container port
+        ports:
+        - containerPort: 3000
