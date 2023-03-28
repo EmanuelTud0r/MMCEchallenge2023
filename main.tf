@@ -13,7 +13,6 @@ resource "google_container_cluster" "primary" {
     # nodejs-demo-319000 | us-central1-c | node-demo-k8s
     command = "gcloud container clusters get-credentials mm-challenge-2023 --zone us-central1-c --project a37nnunvhmc0oiwh3rx0rwkcl4gr5r"
   }
-
   node_config {
     preemptible  = true
     machine_type = "e2-micro"
@@ -24,14 +23,11 @@ resource "google_container_cluster" "primary" {
       "https://www.googleapis.com/auth/logging.write",
       "https://www.googleapis.com/auth/monitoring",
     ]
-
     metadata = {
       disable-legacy-endpoints = "true"
     }
-
     tags = ["mm-challenge-2023"]
   }
-
   timeouts {
     # time out after 45 min if the Kubernetes cluster creation is still not finish
     create = "45m" 
